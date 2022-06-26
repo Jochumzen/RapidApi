@@ -73,4 +73,7 @@ dependencies {
     implementation(Hilt.android)
     kapt(Hilt.compiler)
 
+    implementation(project(":datasource_trueway"))
+    implementation(project(":domain"))
+
 }

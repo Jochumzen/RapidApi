@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "RapidApi"
 include ':app'
 include ':datasource_trueway'
+include ':domain'
+project(':domain').projectDir = new File('/../Mapiganja/domain')

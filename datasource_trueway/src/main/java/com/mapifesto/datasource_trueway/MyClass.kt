@@ -1,4 +1,4 @@
-package com.mapifesto.datasource_trueway
+package com.mapifesto.datasource_rapid
 
 class MyClass {
 }
