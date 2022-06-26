@@ -1,7 +1,6 @@
 package com.mapifesto.datasource_trueway
 
 import com.mapifesto.datasource_rapid.RapidDataState
-import com.mapifesto.datasource_rapid.RapidInteractors
 import com.mapifesto.domain.RapidReverseItems
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

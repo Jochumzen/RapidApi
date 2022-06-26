@@ -1,8 +1,6 @@
-package com.mapifesto.datasource_rapid
+package com.mapifesto.datasource_trueway
 
 import com.mapifesto.datasource_trueway.EndPoints.REVERSE
-import com.mapifesto.datasource_trueway.RapidDto
-import com.mapifesto.datasource_trueway.RapidService
 import io.ktor.client.*
 import io.ktor.client.request.*
 

@@ -18,7 +18,7 @@ data class RapidDto(
         val address: String,
 
         @SerialName("postal_code")
-        val postalCode: String,
+        val postalCode: String? = null,
 
         @SerialName("country")
         val country: String,
@@ -27,19 +27,19 @@ data class RapidDto(
         val region: String,
 
         @SerialName("area")
-        val area: String,
+        val area: String? = null,
 
         @SerialName("locality")
-        val locality: String,
+        val locality: String? = null,
 
         @SerialName("sublocality")
-        val sublocality: String,
+        val sublocality: String? = null,
 
         @SerialName("street")
-        val street: String,
+        val street: String? = null,
 
         @SerialName("house")
-        val house: String,
+        val house: String? = null,
 
         @SerialName("location")
         val locationDto: LocationDto,
@@ -57,7 +57,7 @@ data class RapidDto(
             @SerialName("lat")
             val lat: Double,
 
-            @SerialName("lon")
+            @SerialName("lng")
             val lon: Double,
         )
 

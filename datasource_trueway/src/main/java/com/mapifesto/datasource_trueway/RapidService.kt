@@ -1,6 +1,5 @@
 package com.mapifesto.datasource_trueway
 
-import com.mapifesto.datasource_rapid.RapidServiceImpl
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.json.*

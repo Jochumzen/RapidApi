@@ -52,6 +52,7 @@ fun Compose(
     // CHECK BELOW FOR HOW THE API IS SUPPOSED TO LOOK LIKE
 
     val apiKey = "6132aa3549mshbf538dd63606747p15f191jsne5c459961d7d"
+    var showWhat by remember {mutableStateOf("")}
     var locationString by remember { mutableStateOf("") }
     var errorMsg by remember {mutableStateOf("")}
     var rapidReverseItems by remember { mutableStateOf<RapidReverseItems?>(null) }
@@ -74,6 +75,9 @@ fun Compose(
             Row {
                 Button(
                     onClick = {
+                        showWhat = ""
+                        errorMsg = ""
+
                         rapidIntermediary.reverseSearch(
                             rapidSearchMembers = RapidSearchMembers(
                                 rapidApiApp = "default-application_6450676",
@@ -86,7 +90,10 @@ fun Compose(
                         ) {
                             when (it) {
                                 is RapidDataState.Error -> errorMsg = it.error
-                                is RapidDataState.RapidData -> rapidReverseItems = it.data
+                                is RapidDataState.RapidData -> {
+                                    showWhat = "Reverse completed"
+                                    rapidReverseItems = it.data
+                                }
                             }
                         }
                     }
@@ -97,16 +104,20 @@ fun Compose(
 
             if(errorMsg != "") Text("Error: $errorMsg") else {
 
-                LazyColumn(
-                    state = rememberLazyListState()
-                ) {
-                    items(rapidReverseItems!!.items.map {
-                        "${it.address}, "
+                when (showWhat) {
+                    "Reverse completed" -> {
+                        LazyColumn(
+                            state = rememberLazyListState()
+                        ) {
+                            items(rapidReverseItems!!.items.map {
+                                "${it.address}, "
                                 "${it.postalCode} " +
-                                "${it.country}, " +
+                                        "${it.country}, " +
                                         it.region + it.area + it.locality + it.sublocality + it.street + it.house + locationString + it.locationType + it.type
-                    }) {
-                        Text(it)
+                            }) {
+                                Text(it)
+                            }
+                        }
                     }
                 }
             }

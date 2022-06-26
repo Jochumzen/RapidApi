@@ -5,7 +5,7 @@ import com.mapifesto.domain.RapidReverseItems
 
 object Mapper {
 
-    fun createRapidReverseItem(dto: RapidDto): RapidReverseItems {
+    fun createRapidReverseItem(dto: RapidDto): RapidReverseItems? {
 
         return RapidReverseItems(
             items = dto.results.map {
