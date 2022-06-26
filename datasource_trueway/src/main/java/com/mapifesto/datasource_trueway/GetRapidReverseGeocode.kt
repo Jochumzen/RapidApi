@@ -1,7 +1,6 @@
 package com.mapifesto.datasource_trueway
 
 import com.mapifesto.datasource_rapid.RapidDataState
-import com.mapifesto.datasource_rapid.RapidService
 import com.mapifesto.domain.RapidReverseItems
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,7 +17,9 @@ class GetRapidReverseGeocode(
         val rapidDtoResult: RapidDto? = try {
             service.reverse(
                 apiKey = rapidSearchMembers.xRapidApiKey,
-                location = rapidSearchMembers.location
+                host = rapidSearchMembers.xRapidApiHost,
+                location = rapidSearchMembers.location,
+                language = rapidSearchMembers.language
             )
         } catch (e: Exception) {
             e.printStackTrace()

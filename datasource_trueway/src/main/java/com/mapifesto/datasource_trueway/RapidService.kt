@@ -1,6 +1,6 @@
-package com.mapifesto.datasource_rapid
+package com.mapifesto.datasource_trueway
 
-import com.mapifesto.datasource_trueway.RapidDto
+import com.mapifesto.datasource_rapid.RapidServiceImpl
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.json.*
@@ -10,7 +10,9 @@ interface RapidService {
 
     suspend fun reverse(
         apiKey: String,
+        host: String,
         location: String,
+        language: String,
     ): RapidDto
 
     companion object Factory {
