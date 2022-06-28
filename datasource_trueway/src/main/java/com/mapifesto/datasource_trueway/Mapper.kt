@@ -13,6 +13,7 @@ object Mapper {
         var area = ""
         var locality = ""
         var sublocality = ""
+        var neighborhood = ""
         var street = ""
         var house = ""
         var lat = ""
@@ -20,27 +21,223 @@ object Mapper {
         var locationType = ""
         var type = ""
 
+
+        dto.results.find {
+            it.type == "poi"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+        }
+
         dto.results.find {
             it.type == "street_address"
         }.apply {
-            postalCode = this?.postalCode ?: ""
-            country = this?.country ?: ""
-            region = this?.region ?: ""
-            street = this?.street ?: ""
-            sublocality = this?.sublocality ?: ""
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+        }
+
+        dto.results.find {
+            it.type == "route"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "road_intersection"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "admin_area"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "country"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "region"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
 
         }
 
         dto.results.find {
             it.type == "area"
         }.apply {
-            area = this?.area ?: ""
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
         }
 
         dto.results.find {
             it.type == "locality"
         }.apply {
-            locality = this?.locality ?: ""
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "sublocality"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "neighborhood"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "building"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
+
+        }
+
+        dto.results.find {
+            it.type == "postal_code"
+        }.apply {
+            when {
+                address == "" -> this?.address
+                postalCode == "" -> this?.postalCode
+                country == "" -> this?.country
+                region == "" -> this?.region
+                area == "" -> this?.area
+                locality == "" -> this?.locality
+                neighborhood == "" -> this?.sublocality
+                street == "" -> this?.street
+                house == "" -> this?.house
+            }
         }
 
         return RapidReverseItem(

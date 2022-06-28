@@ -1,6 +1,7 @@
 package com.mapifesto.datasource_trueway
 
 import com.mapifesto.datasource_rapid.RapidDataState
+import com.mapifesto.domain.RapidReverseItem
 import com.mapifesto.domain.RapidReverseItems
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,7 @@ interface RapidIntermediary {
 
     fun reverseSearch(
         rapidSearchMembers: RapidSearchMembers,
-        callback: (RapidDataState<RapidReverseItems>) -> Unit
+        callback: (RapidDataState<RapidReverseItem>) -> Unit
     )
 
 }
@@ -29,7 +30,7 @@ class RapidIntermediaryImpl: RapidIntermediary {
 
     override fun reverseSearch(
         rapidSearchMembers: RapidSearchMembers,
-        callback: (RapidDataState<RapidReverseItems>) -> Unit
+        callback: (RapidDataState<RapidReverseItem>) -> Unit
     ) {
 
         val getRapidReverseGeocode = RapidInteractors.build().getRapidReverseGeocode
@@ -46,7 +47,7 @@ class RapidIntermediaryImpl: RapidIntermediary {
 class RapidIntermediaryMockup: RapidIntermediary {
     override fun reverseSearch(
         rapidSearchMembers: RapidSearchMembers,
-        callback: (RapidDataState<RapidReverseItems>) -> Unit
+        callback: (RapidDataState<RapidReverseItem>) -> Unit
     ) {
         TODO("Not yet implemented")
     }

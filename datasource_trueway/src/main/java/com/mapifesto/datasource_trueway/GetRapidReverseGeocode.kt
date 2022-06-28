@@ -1,6 +1,7 @@
 package com.mapifesto.datasource_trueway
 
 import com.mapifesto.datasource_rapid.RapidDataState
+import com.mapifesto.domain.RapidReverseItem
 import com.mapifesto.domain.RapidReverseItems
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -10,7 +11,7 @@ class GetRapidReverseGeocode(
 ) {
     fun execute(
         rapidSearchMembers: RapidSearchMembers,
-    ): Flow<RapidDataState<RapidReverseItems>> = flow {
+    ): Flow<RapidDataState<RapidReverseItem>> = flow {
 
         var errorMessage: String? = null
 
@@ -32,12 +33,12 @@ class GetRapidReverseGeocode(
             return@flow
         }
 
-        val rapidReverseItems: RapidReverseItems? = Mapper.createRapidReverseItem(rapidDtoResult)
+        val rapidReverseItem: RapidReverseItem? = Mapper.createRapidReverseItem(rapidDtoResult)
 
-        if (rapidReverseItems == null)
+        if (rapidReverseItem == null)
             emit(RapidDataState.Error("Map to domain object failed"))
         else
-            emit(RapidDataState.RapidData(rapidReverseItems))
+            emit(RapidDataState.RapidData(rapidReverseItem))
     }
 
 

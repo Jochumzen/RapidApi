@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import com.mapifesto.datasource_rapid.RapidDataState
 import com.mapifesto.datasource_trueway.RapidIntermediary
 import com.mapifesto.datasource_trueway.RapidSearchMembers
-import com.mapifesto.domain.OrsSearchItems
+import com.mapifesto.domain.RapidReverseItem
 import com.mapifesto.domain.RapidReverseItems
 import com.mapifesto.rapidapi.ui.theme.RapidApiTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,7 +55,7 @@ fun Compose(
     var showWhat by remember {mutableStateOf("")}
     var locationString by remember { mutableStateOf("") }
     var errorMsg by remember {mutableStateOf("")}
-    var rapidReverseItems by remember { mutableStateOf<RapidReverseItems?>(null) }
+    var rapidReverseItem by remember { mutableStateOf<RapidReverseItem?>(null) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -92,7 +92,7 @@ fun Compose(
                                 is RapidDataState.Error -> errorMsg = it.error
                                 is RapidDataState.RapidData -> {
                                     showWhat = "Reverse completed"
-                                    rapidReverseItems = it.data
+                                    rapidReverseItem = it.data
                                 }
                             }
                         }
@@ -106,17 +106,10 @@ fun Compose(
 
                 when (showWhat) {
                     "Reverse completed" -> {
-                        LazyColumn(
-                            state = rememberLazyListState()
-                        ) {
-                            items(rapidReverseItems!!.items.map {
-                                "${it.address}, "
-                                "${it.postalCode} " +
-                                        "${it.country}, " +
-                                        it.region + it.area + it.locality + it.sublocality + it.street + it.house + locationString + it.locationType + it.type
-                            }) {
-                                Text(it)
-                            }
+                        Column {
+
+                            Text(text = rapidReverseItem?.locationString ?: "Item data supposed to be here")
+
                         }
                     }
                 }
